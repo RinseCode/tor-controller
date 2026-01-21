@@ -31,10 +31,10 @@ jobs:
           BUILD_DATE=$(date --rfc-3339=seconds --utc)
           echo ::set-output name=build_date::${BUILD_DATE}
           PLATFORMS=amd64,arm,arm64
-          TAGS1="${{ github.repository }}/tor-controller:${{ steps.vars.outputs.tag }}"
-          TAGS2="${{ github.repository }}/tor-daemon:${{ steps.vars.outputs.tag }}"
-          TAGS3="${{ github.repository }}/tor-daemon-manager:${{ steps.vars.outputs.tag }}"
-          TAGS4="${{ github.repository }}/tor-onionbalance-manager:${{ steps.vars.outputs.tag }}"
+          TAGS1="ghcr.io/${{ github.repository_owner }}/tor-controller:${{ steps.vars.outputs.tag }}"
+          TAGS2="ghcr.io/${{ github.repository_owner }}/tor-daemon:${{ steps.vars.outputs.tag }}"
+          TAGS3="ghcr.io/${{ github.repository_owner }}/tor-daemon-manager:${{ steps.vars.outputs.tag }}"
+          TAGS4="ghcr.io/${{ github.repository_owner }}/tor-onionbalance-manager:${{ steps.vars.outputs.tag }}"
           if [ "${{github.event_name}}" == "pull_request" ]; then
                 echo ::set-output name=push::false
               else
