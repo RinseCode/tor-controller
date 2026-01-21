@@ -31,19 +31,22 @@ jobs:
           BUILD_DATE=$(date --rfc-3339=seconds --utc)
           echo ::set-output name=build_date::${BUILD_DATE}
           PLATFORMS=amd64,arm,arm64
-          TAGS1="ghcr.io/${{ github.repository_owner }}/tor-controller:${{ steps.vars.outputs.tag }}"
-          TAGS2="ghcr.io/${{ github.repository_owner }}/tor-daemon:${{ steps.vars.outputs.tag }}"
-          TAGS3="ghcr.io/${{ github.repository_owner }}/tor-daemon-manager:${{ steps.vars.outputs.tag }}"
-          TAGS4="ghcr.io/${{ github.repository_owner }}/tor-onionbalance-manager:${{ steps.vars.outputs.tag }}"
-          if [ "${{github.event_name}}" == "pull_request" ]; then
-                echo ::set-output name=push::false
-              else
-                echo ::set-output name=push::true
-                echo ::set-output name=tags1::${TAGS1}
-                echo ::set-output name=tags2::${TAGS2}
-                echo ::set-output name=tags3::${TAGS3}
-                echo ::set-output name=tags4::${TAGS4}
-                echo ::set-output name=branch::${GIT_BRANCH}
+          REPO_OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+
+          TAGS1="ghcr.io/${REPO_OWNER}/tor-controller:${{ steps.vars.outputs.tag }}"
+          TAGS2="ghcr.io/${REPO_OWNER}/tor-daemon:${{ steps.vars.outputs.tag }}"
+          TAGS3="ghcr.io/${REPO_OWNER}/tor-daemon-manager:${{ steps.vars.outputs.tag }}"
+          TAGS4="ghcr.io/${REPO_OWNER}/tor-onionbalance-manager:${{ steps.vars.outputs.tag }}"
+
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+              echo ::set-output name=push::false
+          else
+              echo ::set-output name=push::true
+              echo ::set-output name=tags1::${TAGS1}
+              echo ::set-output name=tags2::${TAGS2}
+              echo ::set-output name=tags3::${TAGS3}
+              echo ::set-output name=tags4::${TAGS4}
+              echo ::set-output name=branch::${GIT_BRANCH}
           fi
           echo ::set-output name=platforms::${PLATFORMS}
 
