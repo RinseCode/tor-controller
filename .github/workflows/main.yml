@@ -68,7 +68,7 @@ jobs:
           driver-opts: image=moby/buildkit:latest
 
       - name: Build and push (tor-controller)
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           labels: |
             org.opencontainers.image.created=${{ steps.prep.outputs.build_date }}
@@ -80,7 +80,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags1 }}
           
       - name: Build and push (tor-daemon)
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           labels: |
             org.opencontainers.image.created=${{ steps.prep.outputs.build_date }}
@@ -92,7 +92,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags2 }}
 
       - name: Build and push (tor-daemon-manager)
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           labels: |
             org.opencontainers.image.created=${{ steps.prep.outputs.build_date }}
@@ -104,7 +104,7 @@ jobs:
           tags: ${{ steps.prep.outputs.tags3 }}
 
       - name: Build and push (tor-onionbalance-manager)
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v6
         with:
           labels: |
             org.opencontainers.image.created=${{ steps.prep.outputs.build_date }}
