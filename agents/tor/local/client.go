@@ -26,8 +26,8 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	tordaemon "github.com/bugfest/tor-controller/agents/tor/tordaemon"
-	torv1alpha2 "github.com/bugfest/tor-controller/apis/tor/v1alpha2"
+	tordaemon "github.com/rinsecode/tor-controller/agents/tor/tordaemon"
+	torv1alpha2 "github.com/rinsecode/tor-controller/apis/tor/v1alpha2"
 )
 
 var namespace, onionServiceName string

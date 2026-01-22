@@ -4,11 +4,11 @@ kubectl -n {{ .Release.Namespace }} get po -l app.kubernetes.io/name={{ include 
 
 2. Create a service
 
-kubectl apply -f https://raw.githubusercontent.com/bugfest/tor-controller/master/hack/sample/echoserver.yaml
+kubectl apply -f https://raw.githubusercontent.com/rinsecode/tor-controller/master/hack/sample/echoserver.yaml
 
 3. Expose it as a Tor hidden service (.onion) creating an onionservice object:
   
-kubectl apply -f https://raw.githubusercontent.com/bugfest/tor-controller/master/hack/sample/onionservice.yaml
+kubectl apply -f https://raw.githubusercontent.com/rinsecode/tor-controller/master/hack/sample/onionservice.yaml
 
 4. Get the onion address and use your favourite tor browser to see your service running
 

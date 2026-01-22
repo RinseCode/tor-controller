@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: http-app
-        image: quay.io/bugfest/echoserver:2.5
+        image: ghcr.io/rinsecode/echoserver:2.5
         ports:
         - containerPort: 8080
 ---

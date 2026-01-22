@@ -26,7 +26,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/runtime"
 	k8slog "sigs.k8s.io/controller-runtime/pkg/log"
 
-	torv1alpha2 "github.com/bugfest/tor-controller/apis/tor/v1alpha2"
+	torv1alpha2 "github.com/rinsecode/tor-controller/apis/tor/v1alpha2"
 	"github.com/cockroachdb/errors"
 	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	apiextensionsv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"

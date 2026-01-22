@@ -1,4 +1,4 @@
-module github.com/bugfest/tor-controller
+module github.com/rinsecode/tor-controller
 
 go 1.17
 

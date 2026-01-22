@@ -12,8 +12,8 @@ leaderElection:
   leaderElect: true
   resourceName: 59806307.k8s.torproject.org
 torDaemon:
-  image: quay.io/bugfest/tor-daemon:latest
+  image: ghcr.io/rinsecode/tor-daemon:latest
 torDaemonManager:
-  image: quay.io/bugfest/tor-daemon-manager:latest
+  image: ghcr.io/rinsecode/tor-daemon-manager:latest
 torOnionbalanceManager:
-  image: quay.io/bugfest/tor-onionbalance-manager:latest
+  image: ghcr.io/rinsecode/tor-onionbalance-manager:latest

@@ -29,8 +29,8 @@ import (
 	"k8s.io/apimachinery/pkg/util/runtime"
 	k8slog "sigs.k8s.io/controller-runtime/pkg/log"
 
-	configv2 "github.com/bugfest/tor-controller/apis/config/v2"
-	torv1alpha2 "github.com/bugfest/tor-controller/apis/tor/v1alpha2"
+	configv2 "github.com/rinsecode/tor-controller/apis/config/v2"
+	torv1alpha2 "github.com/rinsecode/tor-controller/apis/tor/v1alpha2"
 	"github.com/cockroachdb/errors"
 )
 

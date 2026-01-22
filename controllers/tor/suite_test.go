@@ -31,7 +31,7 @@ import (
 
 	//+kubebuilder:scaffold:imports
 
-	torv1alpha2 "github.com/bugfest/tor-controller/apis/tor/v1alpha2"
+	torv1alpha2 "github.com/rinsecode/tor-controller/apis/tor/v1alpha2"
 )
 
 // These tests use Ginkgo (BDD-style Go testing framework). Refer to

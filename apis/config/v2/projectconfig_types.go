@@ -54,19 +54,19 @@ type ProjectConfig struct {
 
 type TorDaemonType struct {
 	// +optional
-	// +kubebuilder:default:="quay.io/bugfest/tor-daemon:latest"
+	// +kubebuilder:default:="ghcr.io/rinsecode/tor-daemon:latest"
 	Image string `json:"image,omitempty"`
 }
 
 type TorDaemonManagerType struct {
 	// +optional
-	// +kubebuilder:default:="quay.io/bugfest/tor-daemon-manager:latest"
+	// +kubebuilder:default:="ghcr.io/rinsecode/tor-daemon-manager:latest"
 	Image string `json:"image,omitempty"`
 }
 
 type TorOnionbalanceManagerType struct {
 	// +optional
-	// +kubebuilder:default:="quay.io/bugfest/tor-onionbalance-manager:latest"
+	// +kubebuilder:default:="ghcr.io/rinsecode/tor-onionbalance-manager:latest"
 	Image string `json:"image,omitempty"`
 }
 

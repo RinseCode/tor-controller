@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.0] - 2026-01-22
+
+- Dependabot
+- Update depedencies
+
 ## [0.10.0] - 2023-11-18
 
 ### Bug Fixes

@@ -29,8 +29,8 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	configv2 "github.com/bugfest/tor-controller/apis/config/v2"
-	torv1alpha2 "github.com/bugfest/tor-controller/apis/tor/v1alpha2"
+	configv2 "github.com/rinsecode/tor-controller/apis/config/v2"
+	torv1alpha2 "github.com/rinsecode/tor-controller/apis/tor/v1alpha2"
 	"github.com/cockroachdb/errors"
 )
 

@@ -48,9 +48,9 @@ mount -t cgroup -o blkio none /sys/fs/cgroup/blkio
 Do your testing:
 
 ````shell script
-podman pull quay.io/bugfest/tor-controller:latest
-podman image inspect quay.io/bugfest/tor-controller:latest
-podman run --rm -ti quay.io/bugfest/tor-controller:latest --help
+podman pull ghcr.io/rinsecode/tor-controller:latest
+podman image inspect ghcr.io/rinsecode/tor-controller:latest
+podman run --rm -ti ghcr.io/rinsecode/tor-controller:latest --help
 
 file /var/lib/containers/storage/overlay/c450f82aba630e856a394ce33b4b09f02db5522aa930f1f163b8e9c8e02146f7/diff/manager
 # /var/lib/containers/storage/overlay/c450f82aba630e856a394ce33b4b09f02db5522aa930f1f163b8e9c8e02146f7/diff/manager: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=1fZSGYRhNaI79hhbTcgx/4Ek_ZM6bIpAdo2fuYCcf/maZ7Wemhq3FVhv5pbZFB/fgXWOJPsDeddc3FrBWWB, not stripped
@@ -91,12 +91,12 @@ apk add bash
 curl -k https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
-helm repo add bugfest https://bugfest.github.io/tor-controller
-helm upgrade --install tor-controller bugfest/tor-controller
+helm repo add rinsecode https://rinsecode.github.io/tor-controller
+helm upgrade --install tor-controller rinsecode/tor-controller
 
 kubectl -n default get po -l app.kubernetes.io/name=tor-controller
-kubectl apply -f https://raw.githubusercontent.com/bugfest/tor-controller/master/hack/sample/echoserver.yaml
-kubectl apply -f https://raw.githubusercontent.com/bugfest/tor-controller/master/hack/sample/onionservice.yaml
+kubectl apply -f https://raw.githubusercontent.com/rinsecode/tor-controller/master/hack/sample/echoserver.yaml
+kubectl apply -f https://raw.githubusercontent.com/rinsecode/tor-controller/master/hack/sample/onionservice.yaml
 kubectl get onionservice/example-onion-service -o template='{{printf "%s\n" .status.hostname}}'
 
 ```

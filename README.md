@@ -4,10 +4,10 @@
   <img height="100" src="assets/web/logo.svg">
 </p>
 
-[![Build multiarch image - latest](https://github.com/bugfest/tor-controller/actions/workflows/main.yml/badge.svg)](https://github.com/bugfest/tor-controller/actions/workflows/main.yml)
-[![Build multiarch image - tag](https://github.com/bugfest/tor-controller/actions/workflows/main-tag.yml/badge.svg)](https://github.com/bugfest/tor-controller/actions/workflows/main-tag.yml)
-[![Release Charts](https://github.com/bugfest/tor-controller/actions/workflows/release.yml/badge.svg)](https://github.com/bugfest/tor-controller/actions/workflows/release.yml)
-[![pages-build-deployment](https://github.com/bugfest/tor-controller/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/bugfest/tor-controller/actions/workflows/pages/pages-build-deployment)
+[![Build multiarch image - latest](https://github.com/rinsecode/tor-controller/actions/workflows/main.yml/badge.svg)](https://github.com/rinsecode/tor-controller/actions/workflows/main.yml)
+[![Build multiarch image - tag](https://github.com/rinsecode/tor-controller/actions/workflows/main-tag.yml/badge.svg)](https://github.com/rinsecode/tor-controller/actions/workflows/main-tag.yml)
+[![Release Charts](https://github.com/rinsecode/tor-controller/actions/workflows/release.yml/badge.svg)](https://github.com/rinsecode/tor-controller/actions/workflows/release.yml)
+[![pages-build-deployment](https://github.com/rinsecode/tor-controller/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/rinsecode/tor-controller/actions/workflows/pages/pages-build-deployment)
 
 `Tor-controller` lets you define Tor instances in your k8s using a set of provided custom resource definitions (`tor`, `onion`, `onionha`).
 
@@ -26,7 +26,7 @@ Usage examples:
 # Quick start
 
 ```bash
-helm repo add bugfest https://bugfest.github.io/tor-controller
+helm repo add rinsecode https://rinsecode.github.io/tor-controller
 
 helm repo update
 
@@ -35,7 +35,7 @@ helm upgrade \
   --create-namespace \
   --namespace tor-controller \
   tor-controller \
-  bugfest/tor-controller
+  rinsecode/tor-controller
 ```
 
 Check [install section](#install) bellow for more information.
@@ -124,11 +124,11 @@ Install
 Using helm (recommended):
 
 ```bash
-helm repo add bugfest https://bugfest.github.io/tor-controller
+helm repo add rinsecode https://rinsecode.github.io/tor-controller
 helm repo update
 helm upgrade --install \
   --create-namespace --namespace tor-controller \
-  tor-controller bugfest/tor-controller
+  tor-controller rinsecode/tor-controller
 ```
 
 For namespaced deployments add `--set namespaced=true` to helm's command when deploying.
@@ -137,7 +137,7 @@ Check [charts/tor-controller/README.md](charts/tor-controller/README.md) for a f
 Install tor-controller directly using the manifest (cluster-scoped):
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/bugfest/tor-controller/master/hack/install.yaml
+kubectl apply -f https://raw.githubusercontent.com/rinsecode/tor-controller/master/hack/install.yaml
 ```
 
 Resources
@@ -638,16 +638,16 @@ Builds
 
 | Name                     | Type  | URL                                                         | Comment                    |
 | ------------------------ | :---: | ----------------------------------------------------------- | -------------------------- |
-| helm release             | helm  | https://bugfest.github.io/tor-controller                    |                            |
-| tor-controller           | image | https://quay.io/repository/bugfest/tor-controller           |                            |
-| tor-daemon               | image | https://quay.io/repository/bugfest/tor-daemon               | Build requires bugfest/tor |
-| tor-daemon-manager       | image | https://quay.io/repository/bugfest/tor-daemon-manager       | Build requires bugfest/tor |
-| tor-onionbalance-manager | image | https://quay.io/repository/bugfest/tor-onionbalance-manager |                            |
-| tor                      | image | https://quay.io/repository/bugfest/tor                      |                            |
+| helm release             | helm  | https://rinsecode.github.io/tor-controller                    |                            |
+| tor-controller           | image | https://quay.io/repository/rinsecode/tor-controller           |                            |
+| tor-daemon               | image | https://quay.io/repository/rinsecode/tor-daemon               | Build requires rinsecode/tor |
+| tor-daemon-manager       | image | https://quay.io/repository/rinsecode/tor-daemon-manager       | Build requires rinsecode/tor |
+| tor-onionbalance-manager | image | https://quay.io/repository/rinsecode/tor-onionbalance-manager |                            |
+| tor                      | image | https://quay.io/repository/rinsecode/tor                      |                            |
 
 Dependencies:
 
-- tor-daemon-manager Dockerfile uses bugfest/tor image (built from source). It is built in a separate project to speed up the compilation: [https://github.com/bugfest/tor-docker](https://github.com/bugfest/tor-docker)
+- tor-daemon-manager Dockerfile uses rinsecode/tor image (built from source). It is built in a separate project to speed up the compilation: [https://github.com/rinsecode/tor-docker](https://github.com/rinsecode/tor-docker)
 
 Versions
 --------

@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM docker.io/library/golang:1.20 AS builder
+FROM --platform=$BUILDPLATFORM docker.io/library/golang:1.25 AS builder
 
 WORKDIR /src
 
@@ -11,9 +11,9 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
     CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -a -ldflags="-s -w" -o /out/onionbalance-local-manager ./agents/onionbalance/main.go
 
 # package build
-FROM docker.io/library/alpine:3.17.10
+FROM docker.io/library/alpine:3.23.3
 
-ARG OB_VERSION="0.2.3"
+ARG OB_VERSION="0.2.4"
 
 RUN apk add --no-cache --update \
         git \

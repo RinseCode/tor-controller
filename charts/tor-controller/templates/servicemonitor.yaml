@@ -8,12 +8,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   endpoints:
-  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-    path: /metrics
-    port: https
-    scheme: https
-    tlsConfig:
-      insecureSkipVerify: true
+  - path: /metrics
+    port: http
+    scheme: http
   selector:
     matchLabels:
       {{- include "tor-controller.selectorLabels" . | nindent 6 }}

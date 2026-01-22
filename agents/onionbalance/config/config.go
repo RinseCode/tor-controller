@@ -3,7 +3,7 @@ package config
 import (
 	log "github.com/sirupsen/logrus"
 
-	v1alpha2 "github.com/bugfest/tor-controller/apis/tor/v1alpha2"
+	v1alpha2 "github.com/rinsecode/tor-controller/apis/tor/v1alpha2"
 	"github.com/cockroachdb/errors"
 	"gopkg.in/yaml.v2"
 )

@@ -12921,13 +12921,13 @@ spec:
             torDaemonManager:
               properties:
                 image:
-                  default: quay.io/bugfest/tor-daemon-manager:latest
+                  default: ghcr.io/rinsecode/tor-daemon-manager:latest
                   type: string
               type: object
             torOnionbalanceManager:
               properties:
                 image:
-                  default: quay.io/bugfest/tor-onionbalance-manager:latest
+                  default: ghcr.io/rinsecode/tor-onionbalance-manager:latest
                   type: string
               type: object
             webhook:

@@ -18,7 +18,7 @@ optional:
 # init
 
     # boilerplates
-    kubebuilder init --domain k8s.torproject.org --project-name tor-controller --repo github.com/bugfest/tor-controller --component-config
+    kubebuilder init --domain k8s.torproject.org --project-name tor-controller --repo github.com/rinsecode/tor-controller --component-config
 
     # We might need to support multiple groups
     kubebuilder edit --multigroup=true
@@ -36,7 +36,7 @@ optional:
     kubebuilder create api --group tor --version v1alpha2 --kind OnionBalancedService --controller --namespaced --resource
     kubebuilder create webhook --group tor --version v1alpha2 --kind OnionService --conversion
 
-    kubebuilder create config --name=tor --controller-image=quay.io/bugfest/tor-controller-manager:latest --output=hack/install.yaml
+    kubebuilder create config --name=tor --controller-image=ghcr.io/rinsecode/tor-controller-manager:latest --output=hack/install.yaml
     
     # edit 
     # apis/tor/v1alpha1/onionservice_types.go
@@ -85,9 +85,9 @@ To deploy in a test cluster
 
 # Docker Buildx
 
-    docker buildx build --platform=linux/amd64,linux/arm64,linux/arm -f Dockerfile --tag quay.io/bugfest/tor-controller:latest .
-    docker buildx build --platform=linux/amd64,linux/arm64,linux/arm -f Dockerfile.tor-daemon-manager --tag quay.io/bugfest/tor-daemon-manager:latest .
-    docker buildx build --platform=linux/amd64,linux/arm64,linux/arm -f Dockerfile.tor-onionbalance-manager --tag quay.io/bugfest/tor-onionbalance-manager:latest .
+    docker buildx build --platform=linux/amd64,linux/arm64,linux/arm -f Dockerfile --tag ghcr.io/rinsecode/tor-controller:latest .
+    docker buildx build --platform=linux/amd64,linux/arm64,linux/arm -f Dockerfile.tor-daemon-manager --tag ghcr.io/rinsecode/tor-daemon-manager:latest .
+    docker buildx build --platform=linux/amd64,linux/arm64,linux/arm -f Dockerfile.tor-onionbalance-manager --tag ghcr.io/rinsecode/tor-onionbalance-manager:latest .
     
 # Helm
 

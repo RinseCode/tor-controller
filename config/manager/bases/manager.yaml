@@ -31,7 +31,7 @@ spec:
         - /app/manager
         args:
         - --leader-elect
-        image: quay.io/bugfest/tor-controller:latest
+        image: ghcr.io/rinsecode/tor-controller:latest
         imagePullPolicy: Always
         name: manager
         securityContext:
