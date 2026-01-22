@@ -8,7 +8,7 @@ spec:
     SocksPolicy accept 0.0.0.0/0
 
     UseBridges 1
-    ClientTransportPlugin obfs4 exec /usr/local/bin/obfs4proxy
+    ClientTransportPlugin obfs4 exec /usr/local/bin/lyrebird
 
     # Get bridges from https://bridges.torproject.org/bridges/?transport=obfs4
     # Bridge obfs4 xxx.xxx.xxx.xxxx:xxxx C2541... cert=7V57Z... iat-mode=0
