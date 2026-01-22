@@ -13,7 +13,7 @@ upgradeRollout: true
 
 # -- tor-controller image, it watches onionservices objects
 image:
-  repository: quay.io/bugfest/tor-controller
+  repository: ghcr.io/rinsecode/tor-controller
   pullPolicy: Always
   # -- Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -21,7 +21,7 @@ image:
 daemon:
   # -- tor-daemon image, it runs Tor client
   image:
-    repository: quay.io/bugfest/tor-daemon
+    repository: ghcr.io/rinsecode/tor-daemon
     pullPolicy: Always
     # -- Overrides the image tag whose default is the chart appVersion.
     tag: ""
@@ -29,7 +29,7 @@ daemon:
 manager:
   # -- tor-daemon-manager image, it runs Tor client with manager
   image:
-    repository: quay.io/bugfest/tor-daemon-manager
+    repository: ghcr.io/rinsecode/tor-daemon-manager
     pullPolicy: Always
     # -- Overrides the image tag whose default is the chart appVersion.
     tag: ""
@@ -37,7 +37,7 @@ manager:
 onionbalance:
   # -- tor-onionbalance-manager image, it runs Tor client
   image:
-    repository: quay.io/bugfest/tor-onionbalance-manager
+    repository: ghcr.io/rinsecode/tor-onionbalance-manager
     pullPolicy: Always
     # -- Overrides the image tag whose default is the chart appVersion.
     tag: ""
