@@ -22,7 +22,7 @@ RUN apk add --no-cache --update \
         py3-pycryptodomex \
         py3-setproctitle \
         py3-wheel \
-    && python3 -m pip install --no-cache-dir git+https://gitlab.torproject.org/tpo/core/onionbalance.git@${OB_VERSION}
+    && python3 -m pip install --no-cache-dir --break-system-packages git+https://gitlab.torproject.org/tpo/core/onionbalance.git@${OB_VERSION}
 
 WORKDIR /app
 COPY --from=builder /out/onionbalance-local-manager /app
