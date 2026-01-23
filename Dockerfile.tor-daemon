@@ -1,4 +1,1 @@
-ARG TOR_VERSION="0.4.8.21"
-ARG TOR_IMAGE="ghcr.io/rinsecode/tor"
-
-FROM ${TOR_IMAGE}:${TOR_VERSION} AS tor
+FROM ghcr.io/rinsecode/tor:0.4.8.21 AS tor
