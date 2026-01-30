@@ -1,1 +1,1 @@
-FROM ghcr.io/rinsecode/tor:0.4.8.21 AS tor
+FROM docker.io/rinsecode/tor:0.4.8.22-r1 AS tor
