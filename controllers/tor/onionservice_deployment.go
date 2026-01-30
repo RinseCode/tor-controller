@@ -130,9 +130,6 @@ func torOnionServiceDeployment(onion *torv1alpha2.OnionService, projectConfig *c
 		}
 	}
 
-	// The default mode for the authorized_clients file is 0400
-	//nolint:gomnd // 0400 is a valid octal number
-	defaultMode := int32(0o620)
 	volumes := []corev1.Volume{
 		{
 			Name: privateKeyVolume,
@@ -148,7 +145,6 @@ func torOnionServiceDeployment(onion *torv1alpha2.OnionService, projectConfig *c
 			VolumeSource: corev1.VolumeSource{
 				Secret: &corev1.SecretVolumeSource{
 					SecretName:  onion.AuthorizedClientsSecretName(),
-					DefaultMode: &defaultMode,
 				},
 			},
 		},
