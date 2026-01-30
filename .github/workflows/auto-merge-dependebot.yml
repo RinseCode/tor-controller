@@ -14,3 +14,4 @@ jobs:
         with:
           pull-request-number: ${{ github.event.pull_request.number }}
           token: ${{ secrets.PAT_TOKEN }}
+          merge-method: squash
