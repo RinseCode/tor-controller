@@ -1,0 +1,89 @@
+name: Release Image Version
+
+on:
+  schedule:
+    - cron: '44 12,22 * * *'   # Twice a day
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to create releases
+
+    steps:
+      # ----------------------------------------------------------------------
+      # Checkout the repository (full history needed for tag look‑ups)
+      # ----------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      # ----------------------------------------------------------------------
+      # Get the latest semantic‑version tag (ignoring tor‑controller tags)
+      # ----------------------------------------------------------------------
+      - name: Get latest version tag
+        id: latest_tag
+        run: |
+          TAGS=$(git tag -l '[0-9]*.[0-9]*.[0-9]*' | grep -v '^tor-controller')
+          LATEST=$(printf "%s\n" $TAGS | sort -V | tail -n1)
+          echo "tag=$LATEST" >> $GITHUB_OUTPUT
+
+      # ----------------------------------------------------------------------
+      # Detect changes (excluding the `charts` directory) since the latest tag
+      # ----------------------------------------------------------------------
+      - name: Detect changes (excluding charts)
+        id: changes
+        run: |
+          # If no previous version tag exists, compare against the initial commit
+          if [ -z "${{ steps.latest_tag.outputs.tag }}" ]; then
+            BASE=$(git rev-list --max-parents=0 HEAD)   # first commit
+          else
+            BASE="${{ steps.latest_tag.outputs.tag }}"
+          fi
+
+          # List files changed since $BASE and filter out anything under `charts/`
+          if git diff --name-only "$BASE"..HEAD | grep -v '^charts/' | grep -q .; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      # ----------------------------------------------------------------------
+      # Stop if no relevant changes were found
+      # ----------------------------------------------------------------------
+      - name: Stop if no relevant changes
+        if: steps.changes.outputs.changed == 'false'
+        run: |
+          echo "No changes outside 'charts' since ${{ steps.latest_tag.outputs.tag }} – skipping release."
+          exit 0
+
+      # ----------------------------------------------------------------------
+      # Bump the patch version (e.g., 0.11.0 → 0.11.1)
+      # ----------------------------------------------------------------------
+      - name: Bump patch version
+        if: steps.changes.outputs.changed == 'true'
+        id: bump
+        run: |
+          LATEST="${{ steps.latest_tag.outputs.tag }}"
+          if [ -z "$LATEST" ]; then
+            NEW="0.0.1"
+          else
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$LATEST"
+            PATCH=$((PATCH + 1))
+            NEW="${MAJOR}.${MINOR}.${PATCH}"
+          fi
+          echo "new_version=$NEW" >> $GITHUB_OUTPUT
+
+      # ----------------------------------------------------------------------
+      # Create a new tag and GitHub release
+      # ----------------------------------------------------------------------
+      - name: Create GitHub release
+        if: steps.changes.outputs.changed == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.bump.outputs.new_version }}
+          release_name: Release ${{ steps.bump.outputs.new_version }}
+          generate_release_notes: true
+          token: ${{ secrets.PAT_TOKEN }}
