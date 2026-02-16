@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
     --mount=type=cache,target=/go/pkg \
     CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -a -ldflags="-s -w" -o /out/tor-local-manager ./agents/tor/main.go
 
-FROM docker.io/rinsecode/tor:0.4.8.22@sha256:5253b9c3c2f78a00d0190b9f55e72c2939ee08f802abccd1c99f90ba74e9db51 AS tor
+FROM docker.io/rinsecode/tor:0.4.8.22@sha256:89b4226698813d20677a23f2930af424bc6cc57c89956c51603c7006d5d02b3b AS tor
 
 RUN mkdir -p /app
 COPY --from=builder --chmod=0555 /out/tor-local-manager /app
