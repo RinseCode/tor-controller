@@ -119,7 +119,7 @@ jobs:
       # ----------------------------------------------------------------------
       - name: Create GitHub release
         if: steps.changes.outputs.changed == 'true'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.bump.outputs.new_version }}
           release_name: Release ${{ steps.bump.outputs.new_version }}
