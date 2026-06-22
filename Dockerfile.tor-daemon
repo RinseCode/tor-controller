@@ -1,1 +1,1 @@
-FROM docker.io/rinsecode/tor:0.4.9.8@sha256:30da53ab541c32402906b0e87b96cc1efb94bb37c7e0368eb9d62958bd645ea1 AS tor
+FROM docker.io/rinsecode/tor:0.4.9.8@sha256:d77889c13ad959b8303913b6bf3e86d4c57858d34bef56f1b6a55b51a4bdfedc AS tor
