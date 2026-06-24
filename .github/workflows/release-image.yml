@@ -16,7 +16,7 @@ jobs:
       # Checkout the repository (full history needed for tag look‑ups)
       # ----------------------------------------------------------------------
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT_TOKEN }}   # needed for later push
