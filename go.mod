@@ -7,7 +7,7 @@ require (
 	github.com/cretz/bine v0.2.0
 	github.com/m1/go-generate-password v0.2.0
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.42.1
+	github.com/onsi/gomega v1.43.0
 	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.54.0
 	github.com/sirupsen/logrus v1.10.1
 	gopkg.in/yaml.v2 v2.4.0
